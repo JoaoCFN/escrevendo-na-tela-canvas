@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Socket IO
     const socket = io.connect();
 
-
     // Desenho no canvas
     const tela = document.querySelector("#tela");
     const contexto = tela.getContext('2d');
@@ -83,6 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(ciclo, 10);
     }
+
+    let telaLimpa = {
+        x: 0,
+        y: 0,
+        width: tela.width, 
+        height: tela.height
+    }
+
+    document.querySelector("#btn-limpar").addEventListener("click", () => {
+        socket.emit('limparTela', telaLimpa);
+    });
+
+    socket.on('telaLimpa', (tela) => {
+        const {x, y, width, height} = tela;
+        
+        contexto.clearRect(x, y, width, height);
+    })
 
     ciclo();
 });

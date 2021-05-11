@@ -13,7 +13,7 @@ server.listen(3000, () => {
 
 app.use(express.static(__dirname + "/public"));
 
-const historico = [];
+let historico = [];
 
 io.on('connection', (socket) => {
     console.log('Nova conexão')
@@ -29,5 +29,11 @@ io.on('connection', (socket) => {
 
         io.emit('desenhe', linha);
     });
+
+    socket.on('limparTela', (tela) => {
+        io.emit('telaLimpa', tela);
+
+        historico = [];
+    })
 })
 

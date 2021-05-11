@@ -9,3 +9,15 @@
     height: 500px;
     border: 1px solid #000;
 }
+
+#btn-limpar{
+    background: #037bfc;
+    color: #fff;
+
+    border-radius: 12px;
+    padding: 10px 16px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 700;
+}
