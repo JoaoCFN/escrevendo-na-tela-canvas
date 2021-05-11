@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Socket IO
+    const socket = io.connect();
+
+
+    // Desenho no canvas
     const tela = document.querySelector("#tela");
     const contexto = tela.getContext('2d');
 
@@ -50,6 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
         pincel.movendo = true;
     }
 
+    /* 
+        Quando o servidor mandar o front desenhar, ele executa a função de desenhar linha 
+    */
+    socket.on('desenhe', (linha) => {
+        desenharLinha(linha);
+    })
+
     const ciclo = () => {
         if(pincel.ativo && pincel.movendo && pincel.posAnterior){
             let linha = {
@@ -57,7 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 posAnterior : pincel.posAnterior
             }
 
-            desenharLinha(linha);
+            // Mandando mensagem para o backend com a coordenadas do desenho
+            socket.emit('desenhar', linha);
+
+            // desenharLinha(linha);
             pincel.movendo = false;
         }
 
