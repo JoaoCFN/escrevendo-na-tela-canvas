@@ -1,0 +1,24 @@
+{
+  "name": "escrevendo-tela-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaoCFN/escrevendo-na-tela-canvas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoaoCFN/escrevendo-na-tela-canvas/issues"
+  },
+  "homepage": "https://github.com/JoaoCFN/escrevendo-na-tela-canvas#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.2"
+  }
+}
